@@ -32,9 +32,16 @@ const updateAuthor = (req, res) => {
     .catch((err) => res.status(400).json(err));
 };
 
+const getOneAuthor = (req, res) => {
+  Author.findOne({ _id: req.params.authorId })
+    .then((oneAuthor) => res.json(oneAuthor))
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
   addNewAuthor,
   getAllAuthors,
   deleteAuthor,
   updateAuthor,
+  getOneAuthor,
 };

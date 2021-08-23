@@ -5,7 +5,6 @@ import DeleteButton from "../components/DeleteButton";
 
 const Main = (props) => {
   const [authors, setAuthors] = useState([]);
-  const [formSubmittedBoolean, setFormSubmittedBoolean] = useState(false);
   useEffect(() => {
     console.log("rerender");
     axios

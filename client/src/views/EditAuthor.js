@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, navigate } from "@reach/router";
 import AuthorForm from "../components/AuthorForm";
 import axios from "axios";
@@ -6,6 +6,14 @@ import axios from "axios";
 const EditAuthor = (props) => {
   const { authorId } = props;
   const [name, setName] = useState("");
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/author/${authorId}`)
+      .then((queriedAuthor) => {
+        console.log(queriedAuthor);
+        setName(queriedAuthor.data.name);
+      });
+  }, []);
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
     axios
